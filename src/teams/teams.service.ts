@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Team } from "./interfaces/team.interface";
 
-@Injectable
+@Injectable()
 export class TeamsService {
   private readonly teams: Team[] = [
     {
