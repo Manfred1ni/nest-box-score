@@ -7,7 +7,7 @@ export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
 
   @Get()
-  findAll(): Promise<Team[]> {
+  findAll(): Team[] {
     return this.teamsService.findAll();
   }
 

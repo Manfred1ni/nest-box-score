@@ -1,12 +1,7 @@
-import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { TeamsController } from "./teams/teams.controller";
-import { TeamsService } from "./teams/teams.service";
+import { Module, NestModule, MiddlewareConsumer } from "@nestjs/common";
+import { TeamsModule } from './teams/teams.module';
 
 @Module({
-  imports: [],
-  controllers: [TeamsController],
-  providers: [TeamsService]
+  imports: [TeamsModule]
 })
 export class AppModule {}
