@@ -1,8 +1,11 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Controller, Get, Param, UseGuards, SetMetadata } from "@nestjs/common";
 import { TeamsService } from "./teams.service";
 import { Team } from "./interfaces/team.interface";
+import { RolesGuard } from "src/roles.guard";
+import { Roles } from "src/roles.decorator";
 
 @Controller("teams")
+@UseGuards(RolesGuard)
 export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
 
@@ -12,6 +15,7 @@ export class TeamsController {
   }
 
   @Get(":id")
+  @Roles('admin')
   findOne(@Param("id") id: string) {
     let team = {};
     switch (id) {
